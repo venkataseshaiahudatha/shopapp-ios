@@ -8,6 +8,7 @@
 
 import Swinject
 import ShopApp_Gateway
+import ShopApp_Shopify
 
 class DataAssembly: Assembly {
     func assemble(container: Container) {
@@ -20,6 +21,15 @@ class DataAssembly: Assembly {
             .inObjectScope(.container)
         
         // MARK: - Repositories
+        
+        container.register(API.self) { _ in
+            return ShopifyAPI(apiKey: "62761bc137e3dac4c66d1d1a93d8dab3",
+                              shopDomain: "porganicworld.myshopify.com",
+                              adminApiKey: "1e5f1c6facb67ef0bf9e0c4af642d192",
+                              adminPassword: "5c3061bb2e053642fc1422409ccbb89e",
+                              applePayMerchantId: "APPLE PAY MERCHANT ID")
+            }
+            .inObjectScope(.container)
         
         container.register(ArticleRepository.self) { r in
             return ShopAppArticleRepository(api: r.resolve(API.self)!)

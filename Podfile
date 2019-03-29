@@ -11,6 +11,8 @@ target 'ShopApp' do
   # DI
   pod 'Swinject', '~> 2.2'
   pod 'SwinjectStoryboard', '~> 1.1'
+  
+  pod 'ShopApp_Shopify', '~> 1.0'
 
   # UI
   pod 'SDWebImage', '~> 4.1'
